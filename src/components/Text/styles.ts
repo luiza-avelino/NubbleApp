@@ -1,13 +1,15 @@
-import styled from 'styled-components/native';
+import styled, {css} from 'styled-components/native';
 import {TextProps} from './Text';
 import {TextStyle} from 'react-native';
 
 export const Text = styled.Text<TextProps>`
+  ${({preset, bold, italic, semibold}) => css`
+    font-size: ${$fonts[preset ?? 'paragraphMedium'].fontSize};
+    line-height: ${$fonts[preset ?? 'paragraphMedium'].lineHeight};
+    font-family: ${getFontFamily(preset, bold, italic, semibold)};
+  `}
+
   color: red;
-  font-size: ${props => $fonts[props.preset ?? 'paragraphMedium'].fontSize};
-  line-height: ${props => $fonts[props.preset ?? 'paragraphMedium'].lineHeight};
-  font-family: ${({preset, bold, italic, semibold}) =>
-    getFontFamily(preset, bold, italic, semibold)};
 `;
 
 function getFontFamily(
