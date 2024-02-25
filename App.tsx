@@ -6,13 +6,24 @@
  */
 
 import React from 'react';
-import {SafeAreaView, Text} from 'react-native';
+import {SafeAreaView} from 'react-native';
+
+import Text from './src/components/Text/Text';
+import {ThemeProvider} from 'styled-components';
+import theme from './src/theme/theme';
 
 function App(): React.JSX.Element {
   return (
-    <SafeAreaView>
-      <Text>It works</Text>
-    </SafeAreaView>
+    <ThemeProvider theme={theme}>
+      <SafeAreaView>
+        <Text
+          preset="paragraphMedium"
+          bold
+          italic
+          style={{color: 'blue', marginTop: 150}}
+        />
+      </SafeAreaView>
+    </ThemeProvider>
   );
 }
 
